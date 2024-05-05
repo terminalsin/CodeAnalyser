@@ -1,2 +1,6 @@
 rootProject.name = 'CodeAnalyser'
 
+include('dev.codeanalyser.mainframe')
+include('dev.codeanalyser.modules.gpt.openai')
+include('dev.codeanalyser.modules.gpt.llama')
+include('dev.codeanalyser.shop')
