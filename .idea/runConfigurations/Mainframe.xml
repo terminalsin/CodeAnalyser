@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Mainframe" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    <module name="mainframe.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.codeanalyser.mainframe.Application" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.codeanalyser.mainframe.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

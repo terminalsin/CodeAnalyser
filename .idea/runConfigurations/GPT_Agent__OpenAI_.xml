@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="GPT Agent (OpenAI)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <envs>
+      <env name="SPRING_AI_OPENAI_API_KEY" value="sk-proj-lVtNiss6Guzm38nASXRoT3BlbkFJ0sSnIseTssK4Nv1YCV65" />
+    </envs>
+    <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    <module name="CodeAnalyser.dev.codeanalyser.modules.gpt.openai.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.codeanalyser.modules.gpt.openai.Application" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
