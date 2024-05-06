@@ -69,6 +69,15 @@ subprojects {
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }
 
+    bootJar {
+        enabled = true
+    }
+
+    bootBuildImage {
+        imageName = 'codeanalyser/' + project.name
+        enabled = true
+    }
+
     tasks.named('test') {
         useJUnitPlatform()
     }
@@ -85,4 +94,12 @@ subprojects {
             options.compilerArgs += ['-Xplugin:Manifold']
         }
     }
+}
+
+bootJar {
+    enabled = false
+}
+
+bootBuildImage{
+    enabled = false
 }

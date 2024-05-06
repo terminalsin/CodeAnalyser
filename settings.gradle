@@ -3,8 +3,14 @@ rootProject.name = 'CodeAnalyser'
 include(':mainframe')
 project(':mainframe').projectDir = file('dev.codeanalyser.mainframe')
 
+include(':modules')
+project(':modules').projectDir = file('dev.codeanalyser.modules')
+
 include(':modules:code-storage')
 project(':modules:code-storage').projectDir = file('dev.codeanalyser.modules.code-storage')
+
+include(':modules:gpt')
+project(':modules:gpt').projectDir = file('dev.codeanalyser.modules.gpt')
 
 include(':modules:gpt:openai')
 project(':modules:gpt:openai').projectDir = file('dev.codeanalyser.modules.gpt.openai')
@@ -14,3 +20,4 @@ project(':modules:gpt:llama').projectDir = file('dev.codeanalyser.modules.gpt.ll
 
 include(':shop')
 project(':shop').projectDir = file('dev.codeanalyser.shop')
+

@@ -8,10 +8,6 @@ repositories {
 
 dependencies {
     // Depend on services
-    compileOnly project(':modules:gpt:llama')
-    compileOnly project(':modules:gpt:openai')
-    compileOnly project(':modules:code-storage')
-
     // Authentication
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-mail'

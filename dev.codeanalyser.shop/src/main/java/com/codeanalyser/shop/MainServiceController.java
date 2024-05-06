@@ -1,6 +1,6 @@
 package com.codeanalyser.shop;
 
-import com.codeanalyser.codestorage.modal.CodeModal;
+import com.codeanalyser.shop.code.CodeModalDto;
 import com.codeanalyser.shop.code.CodeStorageServiceDelegate;
 import com.codeanalyser.shop.gpt.GptServiceDelegate;
 import com.codeanalyser.shop.gpt.serializer.CodeModalJsonParser;
@@ -26,7 +26,7 @@ public class MainServiceController {
     private CodeModalJsonParser codeModalJsonParser;
 
     @PostMapping("/generate")
-    public CodeModal generateData(@RequestParam String code, @AuthenticationPrincipal UserDetails userDetails) {
+    public CodeModalDto generateData(@RequestParam String code, @AuthenticationPrincipal UserDetails userDetails) {
         final String prompt = """
                 Given the Java code snippet, Please provide a breakdown by analyzing its various components:
                 1. For annotations and their usage.
@@ -46,7 +46,7 @@ public class MainServiceController {
                     "review": [
                         {
                             "code":"<input code copied here, can be multiple lines>",
-                            "highlight":"<recommendation, if any, for the code. Can be empty>",
+                            "highlight":"<recommendation, if any, for the code. Can be empty if NONE type is specified>",
                             "type":"<Type of notice. Can be 'ERROR', 'WARNING', 'INFO', 'NONE'>",
                         }
                         // do this until you've returned the entire code back in this format
@@ -69,7 +69,7 @@ public class MainServiceController {
 
         try {
             // Parse the json output and set the results
-            CodeModal parsedCodeModal = codeModalJsonParser.parseJsonToCodeModal(output);
+            CodeModalDto parsedCodeModal = codeModalJsonParser.parseJsonToCodeModal(output);
             parsedCodeModal.setCode(code);
             parsedCodeModal.setOwnerUsername(username);
 

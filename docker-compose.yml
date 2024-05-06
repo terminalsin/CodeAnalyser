@@ -1,0 +1,62 @@
+version: '3.9'
+
+services:
+  mainframe:
+    image: codeanalyser/mainframe
+    ports:
+      - "8761:8761"
+    restart: always
+    networks:
+      - backend
+
+  openai-agent:
+    image: codeanalyser/openai
+    expose:
+      - "8081"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://mainframe:8761/eureka"
+      SPRING_AI_OPENAI_API_KEY: "sk-proj-lVtNiss6Guzm38nASXRoT3BlbkFJ0sSnIseTssK4Nv1YCV65"
+    restart: always
+    networks:
+      - backend
+    depends_on:
+      - mainframe
+
+  llama-agent:
+    image: codeanalyser/llama
+    expose:
+      - "8082"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://mainframe:8761/eureka"
+    restart: always
+    networks:
+      - backend
+    depends_on:
+      - mainframe
+
+  code-storage:
+    image: codeanalyser/code-storage
+    expose:
+      - "8799"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://mainframe:8761/eureka"
+    restart: always
+    networks:
+      - backend
+    depends_on:
+      - mainframe
+
+  shop:
+    image: codeanalyser/shop
+    ports:
+      - "8080:8080"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://mainframe:8761/eureka"
+    restart: always
+    networks:
+      - backend
+    depends_on:
+      - mainframe
+
+networks:
+  backend:

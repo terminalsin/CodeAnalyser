@@ -1,6 +1,5 @@
 package com.codeanalyser.shop.code;
 
-import com.codeanalyser.codestorage.modal.CodeModal;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -26,16 +25,16 @@ public class CodeStorageServiceDelegate {
     }
 
     @CircuitBreaker(name = "codeStorageService", fallbackMethod = "fallback")
-    public CodeModal saveCodeModal(CodeModal modal) {
+    public CodeModalDto saveCodeModal(CodeModalDto modal) {
         String url = getServiceUrl("code-storage-service");
         if (url != null) {
-            return restTemplate.postForObject(url + "/api/v1/code", modal, CodeModal.class);
+            return restTemplate.postForObject(url + "/api/v1/code", modal, CodeModalDto.class);
         }
         throw new RuntimeException("Service URL for Storage is not available");
     }
 
     @CircuitBreaker(name = "codeStorageService", fallbackMethod = "fallback")
-    public List<CodeModal> getAllCodeModals(String username) {
+    public List<CodeModalDto> getAllCodeModals(String username) {
         String url = getServiceUrl("code-storage-service");
         if (url != null) {
             return restTemplate.getForObject(url + "/api/v1/code?username=" + username, List.class);
@@ -53,7 +52,7 @@ public class CodeStorageServiceDelegate {
         throw new RuntimeException("Service URL for Storage is not available");
     }
 
-    public String fallback(CodeModal modal, Throwable t) {
+    public String fallback(CodeModalDto modal, Throwable t) {
         throw new RuntimeException("Service URL for Backup Storage is not available");
     }
 
