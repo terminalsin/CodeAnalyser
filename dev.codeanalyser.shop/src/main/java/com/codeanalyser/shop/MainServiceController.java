@@ -1,7 +1,8 @@
 package com.codeanalyser.shop;
 
 import com.codeanalyser.codestorage.modal.CodeModal;
-import com.codeanalyser.shop.gpt.ServiceDelegate;
+import com.codeanalyser.shop.code.CodeStorageServiceDelegate;
+import com.codeanalyser.shop.gpt.GptServiceDelegate;
 import com.codeanalyser.shop.gpt.serializer.CodeModalJsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainServiceController {
 
     @Autowired
-    private ServiceDelegate serviceDelegate;
+    private GptServiceDelegate serviceDelegate;
 
+    @Autowired
+    private CodeStorageServiceDelegate codeStorageServiceDelegate;
 
     @Autowired
     private CodeModalJsonParser codeModalJsonParser;
@@ -42,7 +45,7 @@ public class MainServiceController {
                 {
                     "review": [
                         {
-                            "code":"<code highlighted here, can be multiple lines>",
+                            "code":"<input code copied here, can be multiple lines>",
                             "highlight":"<recommendation, if any, for the code. Can be empty>",
                             "type":"<Type of notice. Can be 'ERROR', 'WARNING', 'INFO', 'NONE'>",
                         }
@@ -66,9 +69,12 @@ public class MainServiceController {
 
         try {
             // Parse the json output and set the results
-            final CodeModal parsedCodeModal = codeModalJsonParser.parseJsonToCodeModal(output);
+            CodeModal parsedCodeModal = codeModalJsonParser.parseJsonToCodeModal(output);
             parsedCodeModal.setCode(code);
             parsedCodeModal.setOwnerUsername(username);
+
+            // Save the parsed code modal to the database
+            parsedCodeModal = codeStorageServiceDelegate.saveCodeModal(parsedCodeModal);
 
             return parsedCodeModal;
         } catch (Exception e) {

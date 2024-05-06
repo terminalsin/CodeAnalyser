@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Component
-public class ServiceDelegate {
+public class GptServiceDelegate {
 
     @Autowired
     private RestTemplate restTemplate;
