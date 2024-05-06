@@ -10,33 +10,12 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.mainframe" />
+            <option value="$PROJECT_DIR$/dev.codeanalyser.modules.code-storage" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.modules.gpt.llama" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.modules.gpt.openai" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.shop" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/dev.codeanalyser.mainframe" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/dev.codeanalyser.mainframe" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/dev.codeanalyser.modules.gpt.llama" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/dev.codeanalyser.modules.gpt.llama" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/dev.codeanalyser.shop" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/dev.codeanalyser.shop" />
+            <option value="$PROJECT_DIR$/modules" />
+            <option value="$PROJECT_DIR$/modules/gpt" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -1,55 +1,30 @@
-plugins {
-    id 'java'
-    id 'org.springframework.boot' version '3.2.5'
-    id 'io.spring.dependency-management' version '1.1.4'
-}
-
 group = 'com.codeanalyser'
 version = '0.0.1-SNAPSHOT'
 
-java {
-    sourceCompatibility = '17'
-}
-
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
-
 repositories {
+    maven { url 'https://jitpack.io' }
     mavenCentral()
 }
 
-ext {
-    set('springCloudVersion', "2023.0.1")
-}
-
 dependencies {
+    // Depend on services
+    compileOnly project(':modules:gpt:llama')
+    compileOnly project(':modules:gpt:openai')
+    compileOnly project(':modules:code-storage')
+
     // Authentication
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'com.auth0:java-jwt:4.4.0'
+    implementation 'com.github.supabase-community:gotrue-java:80966c7e75'
+
+    // Logic
+    implementation 'com.google.code.gson:gson:2.10.1'
 
     // API
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
 
     // Microservice Discovery
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-
-    // Devtools
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
-
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
 }

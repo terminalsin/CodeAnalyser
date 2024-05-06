@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Shop" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-    <module name="shop.main" />
+    <module name="CodeAnalyser.shop.main" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.codeanalyser.shop.Application" />
     <method v="2">
       <option name="Make" enabled="true" />

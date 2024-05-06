@@ -1,6 +1,16 @@
 rootProject.name = 'CodeAnalyser'
 
-include('dev.codeanalyser.mainframe')
-include('dev.codeanalyser.modules.gpt.openai')
-include('dev.codeanalyser.modules.gpt.llama')
-include('dev.codeanalyser.shop')
+include(':mainframe')
+project(':mainframe').projectDir = file('dev.codeanalyser.mainframe')
+
+include(':modules:code-storage')
+project(':modules:code-storage').projectDir = file('dev.codeanalyser.modules.code-storage')
+
+include(':modules:gpt:openai')
+project(':modules:gpt:openai').projectDir = file('dev.codeanalyser.modules.gpt.openai')
+
+include(':modules:gpt:llama')
+project(':modules:gpt:llama').projectDir = file('dev.codeanalyser.modules.gpt.llama')
+
+include(':shop')
+project(':shop').projectDir = file('dev.codeanalyser.shop')
