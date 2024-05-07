@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 @RestController
 public class MainServiceController {
@@ -24,6 +26,11 @@ public class MainServiceController {
 
     @Autowired
     private CodeModalJsonParser codeModalJsonParser;
+
+    @GetMapping("/my-data")
+    public List<CodeModalDto> getMyData(@AuthenticationPrincipal UserDetails userDetails) {
+        return codeStorageServiceDelegate.getAllCodeModals(userDetails.getUsername());
+    }
 
     @PostMapping("/generate")
     public CodeModalDto generateData(@RequestParam String code, @AuthenticationPrincipal UserDetails userDetails) {
