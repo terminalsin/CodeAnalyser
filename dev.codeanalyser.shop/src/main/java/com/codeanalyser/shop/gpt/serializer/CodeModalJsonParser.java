@@ -26,6 +26,7 @@ public class CodeModalJsonParser {
                 .map(CodeModalJsonParser::convertResultDtoToEntity)
                 .collect(Collectors.toList());
         codeModal.setResults(results);
+        codeModal.setFileName(reviewDTO.getName());
         return codeModal;
     }
 

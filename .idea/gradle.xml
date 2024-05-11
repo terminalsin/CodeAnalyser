@@ -9,7 +9,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/dev.codeanalyser.common" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.mainframe" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.modules" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.modules.code-storage" />

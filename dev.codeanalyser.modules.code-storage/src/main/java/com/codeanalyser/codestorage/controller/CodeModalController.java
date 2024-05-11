@@ -1,6 +1,7 @@
 package com.codeanalyser.codestorage.controller;
 
 import com.codeanalyser.codestorage.modal.CodeModal;
+import com.codeanalyser.codestorage.modal.CodeModalDto;
 import com.codeanalyser.codestorage.service.CodeModalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +21,9 @@ public class CodeModalController {
         this.codeModalService = codeModalService;
     }
 
-    @PostMapping
-    public ResponseEntity<CodeModal> saveCodeModal(@RequestParam CodeModal code) {
-        CodeModal codeModal = codeModalService.saveCodeModal(code);
+    @PostMapping("")
+    public ResponseEntity<CodeModal> saveCodeModal(@RequestBody CodeModalDto code) {
+        CodeModal codeModal = codeModalService.saveCodeModal(code.toCodeModal());
         return ResponseEntity.ok(codeModal);
     }
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 @Component
 public class GptServiceDelegate {
@@ -24,29 +25,39 @@ public class GptServiceDelegate {
     }
 
     @CircuitBreaker(name = "openaiService", fallbackMethod = "fallbackOpenAI")
-    public String callOpenAIService(String prompt) {
+    public String callOpenAIService(String prompt, Consumer<String> onStatus) {
+        onStatus.accept("openai:start");
         String url = getServiceUrl("openai-service");
         if (url != null) {
-            return restTemplate.postForObject(url + "/generate", prompt, String.class);
+            final String answer = restTemplate.postForObject(url + "/generate", prompt, String.class);
+            onStatus.accept("openai:completed");
+            return answer;
         }
+
+        onStatus.accept("openai:failed");
         throw new RuntimeException("Service URL for OpenAI is not available");
     }
 
     @CircuitBreaker(name = "llamaService", fallbackMethod = "fallbackLlama")
-    public String callLlamaService(String prompt) {
+    public String callLlamaService(String prompt, Consumer<String> onStatus) {
+        onStatus.accept("llama:start");
         String url = getServiceUrl("llama-service");
         if (url != null) {
-            return restTemplate.postForObject(url + "/generate", prompt, String.class);
+            final String answer = restTemplate.postForObject(url + "/generate", prompt, String.class);
+            onStatus.accept("llama:completed");
+            return answer;
         }
+
+        onStatus.accept("llama:failed");
         throw new RuntimeException("Service URL for LLaMA is not available");
     }
 
-    public String fallbackOpenAI(String prompt, Throwable t) {
-        System.out.println("Fallback due to " + t.getMessage());
-        return callLlamaService(prompt);
+    public String fallbackOpenAI(String prompt, Consumer<String> onFailure, Throwable t) {
+       onFailure.accept("llama:start");
+        return callLlamaService(prompt, onFailure);
     }
 
     public String fallbackLlama(String prompt, Throwable t) {
-        return "All services are unavailable";
+        return "fallback:none";
     }
 }

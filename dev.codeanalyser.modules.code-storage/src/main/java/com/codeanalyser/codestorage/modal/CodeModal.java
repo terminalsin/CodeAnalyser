@@ -20,6 +20,10 @@ public class CodeModal {
     private UUID id;
 
     private String ownerUsername;
+
+    private String fileName;
+
+    @Lob
     private String code;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -38,7 +42,10 @@ public class CodeModal {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id; // Using Long for IDs of results
 
+        @Lob
         private String code;
+
+        @Lob
         private String highlight;
 
         @Enumerated(EnumType.STRING) // Store enum values as their string representation
@@ -46,7 +53,7 @@ public class CodeModal {
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "code_modal_id", insertable = false, updatable = false)
-        private CodeModal codeModal; // Back reference to the owning CodeModal
+        private transient CodeModal codeModal; // Back reference to the owning CodeModal
     }
 
     public enum SuggestionType {

@@ -13,6 +13,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.ArrayList;
 
 import com.auth0.jwt.JWT;
@@ -45,9 +46,14 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 
                 if (username != null) {
                     UserDetails userDetails = new SupabaseUserDetails2(username); // Replace with your own UserDetails implementation (e.g. SupabaseUserDetails
-                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                            userDetails, null,
+                            userDetails.getAuthorities()
+                    );
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(authentication);
+                    Principal principal = SecurityContextHolder.getContext().getAuthentication();
+                    System.out.println("xxx Principal: " + principal + " " + principal.getName());
                 }
             } catch (JWTVerificationException exception) {
                 SecurityContextHolder.clearContext(); // Clear context to ensure it is not used accidentally

@@ -1,5 +1,6 @@
 package com.codeanalyser.shop.code;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -10,19 +11,23 @@ import java.util.UUID;
 public class CodeModalDto {
     private UUID id;
     private String ownerUsername;
+
+    @SerializedName("fileName")
+    private String fileName;
+
+    @SerializedName("code")
     private String code;
     private List<CodeResult> results;
     private int score;
 
     @Data
-    @EqualsAndHashCode(exclude = "codeModal") // Avoids circular references in generated equals and hashCode methods
+    @EqualsAndHashCode() // Avoids circular references in generated equals and hashCode methods
     public static class CodeResult {
         private Long id; // Using Long for IDs of results
 
         private String code;
         private String highlight;
         private SuggestionType type;
-        private CodeModalDto codeModal; // Back reference to the owning CodeModal
     }
 
     public enum SuggestionType {
