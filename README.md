@@ -91,6 +91,35 @@ docker-compose up
 
 You may optionally add the parameter `-d` to run in a detached status. The frontend will be deployed to https://localhost:3000
 
+### Troubleshooting
+
+##### I did not deploy OpenAI, and it hangs on OLlama fallback!
+<details>
+    <summary>Solution</summary>
+
+There's an incredibly easy fix for this. First lets diagnose the issue with the service: 
+```
+docker-compose logs llama-agent
+```
+
+If this outputs an error similar to this:
+
+```
+llama-agent-1  | java.lang.RuntimeException: [404] Not Found - {"error":"model 'llama3' not found, try pulling it first"}
+llama-agent-1  |        at org.springframework.ai.ollama.api.OllamaApi$OllamaResponseErrorHandler.handleError(OllamaApi.java:78) ~[spring-ai-ollama-0.8.1.jar:0.8.1]
+llama-agent-1  |        Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException:
+llama-agent-1  | Error has been observed at the following site(s):
+llama-agent-1  |        *__checkpoint ? HTTP POST "/generate" [ExceptionHandlingWebHandler]
+```
+
+Then you should run
+
+```
+docker-compose exec ollama ollama run llama3
+```
+
+</details>
+
 ## Modules
 These are broken down into a microservice infrastructure, view the initial project graph below:
 

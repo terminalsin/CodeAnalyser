@@ -142,7 +142,10 @@ interface CodeModalDto {
 ## WebSocket API Specifications
 
 ### ⚒️ /user/queue/review [WS]
+---
+
 Sends a codemodal every time it is added to an account to maintain synchronization with the frontend UI and keep everything dynamic
+
 
 **Server Message format**
 ```json
@@ -219,6 +222,8 @@ interface CodeResult {
 </details>
 
 ### ⚒️ /user/queue/review/status [WS]
+---
+
 Sends the current status of the operation being loaded. Is subscribed when the original "generate" request is done, the unsubscribed on the completed status.
 
 **Server Message format**
