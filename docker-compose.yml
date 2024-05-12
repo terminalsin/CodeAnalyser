@@ -11,8 +11,8 @@ services:
 
   openai-agent:
     image: codeanalyser/openai
-    expose:
-      - "8081"
+    ports:
+      - "8081:8081"
     environment:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://mainframe:8761/eureka"
       SPRING_AI_OPENAI_API_KEY: "sk-proj-lVtNiss6Guzm38nASXRoT3BlbkFJ0sSnIseTssK4Nv1YCV65"
@@ -24,8 +24,8 @@ services:
 
   llama-agent:
     image: codeanalyser/llama
-    expose:
-      - "8082"
+    ports:
+      - "8082:8082"
     environment:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://mainframe:8761/eureka"
     restart: always
@@ -47,13 +47,15 @@ services:
     restart: always
     networks:
       - backend
+    command: "serve && pull llama3"
 
   code-storage:
     image: codeanalyser/code-storage
-    expose:
-      - "8799"
+    ports:
+      - "8799:8799"
     environment:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://mainframe:8761/eureka"
+      EUREKA_INSTANCE.PREFERIPADDRESS: 'true'
     restart: always
     networks:
       - backend
@@ -72,5 +74,19 @@ services:
     depends_on:
       - mainframe
 
+  frontend:
+    image: codeanalyser/frontend
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_SUPABASE_URL: "https://qmbcqunhrmowgkbxmiqe.supabase.co"
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFtYmNxdW5ocm1vd2drYnhtaXFlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ5NDM0MDAsImV4cCI6MjAzMDUxOTQwMH0.lAdOxVeJ5QctKiHWxbRCOWwVALfnRaOemTZ4cfjqy0E"
+    restart: always
+    networks:
+      - backend
+    depends_on:
+      - mainframe
+
 networks:
   backend:
+    driver: bridge

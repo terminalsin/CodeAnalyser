@@ -96,6 +96,31 @@ subprojects {
     }
 }
 
+tasks.register('buildFrontend') {
+    doLast {
+        exec {
+            workingDir 'code-analyser-frontend'
+            commandLine 'docker', 'build', '-t', 'codeanalyser/frontend', '.'
+        }
+    }
+}
+
+tasks.register('buildLlama') {
+    doLast {
+        exec {
+            workingDir 'code-analyser-ollama'
+            commandLine 'docker', 'build', '-t', 'codeanalyser/ollama', '.'
+        }
+    }
+}
+
+
+tasks.register('oneClickDeploy') {
+    dependsOn subprojects.bootBuildImage
+    dependsOn 'buildFrontend'
+}
+
+
 bootJar {
     enabled = false
 }
