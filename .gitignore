@@ -75,3 +75,5 @@ bin/
 # typescript
 *.tsbuildinfo
 *next-env.d.ts
+
+ollama/ollama/models/*

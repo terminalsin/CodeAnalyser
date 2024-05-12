@@ -27,6 +27,7 @@ services:
     ports:
       - "8082:8082"
     environment:
+      SPRING_AI_OLLAMA_BASE-URL: "http://ollama:11434/"
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://mainframe:8761/eureka"
     restart: always
     networks:
@@ -47,7 +48,7 @@ services:
     restart: always
     networks:
       - backend
-    command: "serve && pull llama3"
+    command: "run llama3"
 
   code-storage:
     image: codeanalyser/code-storage

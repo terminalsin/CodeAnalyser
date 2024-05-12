@@ -21,7 +21,21 @@
 
 CodeAnalyser is a fully functional, micro-service based, downtime resilient code analyser for single class inputs with GPT and Static analysis capabilities. It was originally designed to be multi-permeable and cross-compatible amongst languages to maintain cross-language support since we're working with LLMs. Since then, we have additionally added experimental language support (although anything other than Java would either require to move the microservice infrastructure to Apache Zookeeper/Consul to support rust, etc...). 
 
-This project
+<p align="center">
+  <a><img alt="Api Type" src="./docs/preview.gif"></a>
+</p>
+<p align="center">
+    <i>Preview of the application using OpenAI GPT 3.5-turbo to analyse a Java class </i>
+</p>
+
+Overall, this application has the following features
+- OpenAI GPT Support
+- OLlama Llama 3 fallback if OpenAI is down
+- Full code evaluation for any language (Java, JavaScript, Rust, etc...)
+- Linting and display of suggestions according to type
+- Scalable and deployable on demand
+- Code storage with H2 Database
+- Statistics page which displays average score and warning types
 
 ## Final project specifications
 - [x] Source code. 
@@ -121,3 +135,5 @@ Responsible for ideation. Accomplished the following:
 - Added animations here and there
 - Created documentation
 - Wrote installation/readme page
+
+---
