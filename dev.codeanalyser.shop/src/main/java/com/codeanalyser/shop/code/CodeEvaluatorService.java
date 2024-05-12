@@ -30,17 +30,9 @@ public class CodeEvaluatorService {
         final String prompt = """
                 DO NOT RESPOND WITH ANY PLAIN TEXT. Only respond with a JSON object. Do not add any comments.
                 
-                Given the Java code snippet, Please provide a breakdown by analyzing its various components:
-                1. For annotations and their usage.
-                2. For relationships between entities like @OneToMany, @ManyToOne.
-                3. For field declarations and their significance.
-                4. For enum definitions and their roles.
-                                
-                For each component, specify:
-                - A guessed file name for the code snippet.
-                - A brief description.
-                - Any suggestions for improvement or changes.
-                - Highlight key areas that might need attention or are particularly well implemented.
+                Given the Java code snippet, Please provide a breakdown by analyzing its various components. Try
+                to find vulnerabilities (ERROR), inefficiencies (WARNING), or any other suggestions (INFO) that can
+                be made to improve the code.
                                 
                 Finally, provide an overall rating of the code on a scale from 1 to 100 based on best practices, efficiency, and clarity.
                 
@@ -49,8 +41,8 @@ public class CodeEvaluatorService {
                     "name": "<name of the code snippet>",
                     "review": [
                         {
-                            "code":"<input code copied here, CANNOT be multiple lines>",
-                            "highlight":"<recommendation, if any, for the code. Can be empty if NONE type is specified>",
+                            "code":"<ORIGINAL INPUT code copied here identically, CANNOT be multiple lines>",
+                            "highlight":"<recommendation for the code, if any, for the code. Can be empty if NONE type is specified>",
                             "type":"<Type of notice. Can be 'ERROR', 'WARNING', 'INFO', 'NONE'>",
                         }
                         // do this until you've returned the entire code back in this format

@@ -66,7 +66,6 @@ public class GptServiceDelegate {
     }
 
     public String fallbackOpenAI(String prompt, Consumer<String> onStatus, Throwable t) {
-        onStatus.accept("llama:start");
         return callLlamaService(prompt, onStatus);
     }
 
