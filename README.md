@@ -52,7 +52,8 @@ Overall, this application has the following features
   - [ ] OpenAI tests (none required)
   - [x] Shop tests [[click here]](dev.codeanalyser.shop/src/test/java/com/codeanalyser/shop)
 - [x] Documentation (optional, not required). It includes all written materials that accompany a software project, providing comprehensive information about its design, implementation, usage, maintenance, and other relevant aspects. 
-  - [ ] Mainframe documentation [[click here]](dev.codeanalyser.mainframe/README.md)
+  - [x] Mainframe documentation [[click here]](dev.codeanalyser.shop/README.md)
+  - [x] Frontend documentation [[click here]](codeanalyser-frontend/README.md)
 - [x] Readme file, including the following:
   - [x] Title and Introduction: The README should start with a clear title that succinctly describes the project. 
   - [x] Followed by a brief introduction that provides an overview of what the project is about and its purpose.
@@ -153,6 +154,7 @@ Main contributor to the implementations of frontend design and contributed to th
 - Modified and prettified the home page
 - Removed clutter from frontend
 - Created the base model for the code input page
+- Contributed to documentation
 
 ### Shanyu Juneja
 Main contributor to the backend and significant contributions to the front end to backend connection and UI development and design.
