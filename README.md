@@ -26,6 +26,10 @@ CodeAnalyser is a fully functional, micro-service based, downtime resilient code
 </p>
 <p align="center">
     <i>Preview of the application using OpenAI GPT 3.5-turbo to analyse a Java class </i>
+  <br><br>
+    <a><img alt="Api Type" src="https://i.imgur.com/Vbuda4U.png" href="https://youtu.be/QBnDkiyJ7D8"></a>
+    <br>
+    Watch the video on YouTube: https://youtu.be/QBnDkiyJ7D8
 </p>
 
 Overall, this application has the following features
@@ -55,7 +59,7 @@ Overall, this application has the following features
 - [x] Installation Instructions: Step-by-step guidance on how to install and set up the project. [[click here]](#installation)
 - [x] Configuration: Information on how to configure the project, including any settings, environment variables, or configuration files that may need customization. 
 - [x] Datasets used in the system if any.
-- [x] A video showing all the provided features of the proposed system.
+- [x] A video showing all the provided features of the proposed system.[[click here]](https://youtu.be/QBnDkiyJ7D8)
 - [x] A contribution file, listing each team member’s contributions to the project. [[click here]](#contributions)
 
 ## Installation
