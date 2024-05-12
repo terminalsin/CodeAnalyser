@@ -1,0 +1,17 @@
+bootJar {
+    enabled = false
+}
+
+bootBuildImage{
+    enabled = false
+}
+
+subprojects {
+    bootJar {
+        enabled = false
+    }
+
+    bootBuildImage{
+        enabled = false
+    }
+}

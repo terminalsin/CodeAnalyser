@@ -1,0 +1,25 @@
+dependencies {
+    // Shared
+    implementation project(':shared:codemodal')
+    implementation 'org.checkerframework:checker:3.43.0'
+    implementation 'org.checkerframework:checker-qual:3.43.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+}
+
+compileJava {
+    options.compilerArgs += ['--add-opens', 'jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED']
+}
+
+tasks.test {
+    jvmArgs("--add-opens", "jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED",
+            "--add-exports", "jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED",
+            "--add-exports", "jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED",
+            "--add-exports", "jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED",
+            "--add-exports", "jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED",
+            "--add-exports", "jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED",
+            "--add-exports", "jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED"
+    )
+}

@@ -1,6 +1,6 @@
 package com.codeanalyser.shop.gpt.serializer;
 
-import com.codeanalyser.shop.code.CodeModalDto;
+import com.codeanalyser.shop.code.dto.CodeModalDto;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

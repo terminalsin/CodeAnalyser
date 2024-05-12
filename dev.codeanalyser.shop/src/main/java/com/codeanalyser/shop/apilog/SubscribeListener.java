@@ -1,10 +1,9 @@
 package com.codeanalyser.shop.apilog;
 
-import com.codeanalyser.shop.code.CodeModalStatusDto;
+import com.codeanalyser.shop.code.dto.CodeModalStatusDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionSubscribeEvent;
 

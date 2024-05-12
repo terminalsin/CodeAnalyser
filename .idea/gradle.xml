@@ -11,10 +11,15 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.mainframe" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.modules" />
+            <option value="$PROJECT_DIR$/dev.codeanalyser.modules.analysis" />
+            <option value="$PROJECT_DIR$/dev.codeanalyser.modules.analysis.java.checkerfwk" />
+            <option value="$PROJECT_DIR$/dev.codeanalyser.modules.analysis.java.spoon" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.modules.code-storage" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.modules.gpt" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.modules.gpt.llama" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.modules.gpt.openai" />
+            <option value="$PROJECT_DIR$/dev.codeanalyser.shared" />
+            <option value="$PROJECT_DIR$/dev.codeanalyser.shared.codemodal" />
             <option value="$PROJECT_DIR$/dev.codeanalyser.shop" />
           </set>
         </option>

@@ -8,6 +8,8 @@ repositories {
 
 dependencies {
     // Depend on services
+    implementation project(':shared:codemodal')
+
     // Authentication
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-mail'

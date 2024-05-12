@@ -18,6 +18,22 @@ project(':modules:gpt:openai').projectDir = file('dev.codeanalyser.modules.gpt.o
 include(':modules:gpt:llama')
 project(':modules:gpt:llama').projectDir = file('dev.codeanalyser.modules.gpt.llama')
 
+include(':modules:analysis')
+project(':modules:analysis').projectDir = file('dev.codeanalyser.modules.analysis')
+
+include(':modules:analysis:java-spoon')
+project(':modules:analysis:java-spoon').projectDir = file('dev.codeanalyser.modules.analysis.java.spoon')
+
+
+include(':modules:analysis:java-checkerfwk')
+project(':modules:analysis:java-checkerfwk').projectDir = file('dev.codeanalyser.modules.analysis.java.checkerfwk')
+
 include(':shop')
 project(':shop').projectDir = file('dev.codeanalyser.shop')
+
+include(':shared')
+project(':shared').projectDir = file('dev.codeanalyser.shared')
+
+include(':shared:codemodal')
+project(':shared:codemodal').projectDir = file('dev.codeanalyser.shared.codemodal')
 
