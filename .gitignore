@@ -76,4 +76,4 @@ bin/
 *.tsbuildinfo
 *next-env.d.ts
 
-ollama/ollama/models/*
+ollama/ollama/models/*  
