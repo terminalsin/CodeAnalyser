@@ -162,7 +162,6 @@ Responsible for ideation. Accomplished the following:
 - Created the mainframe service
 - Created the main next.js template and core
 - Implemented authentication and user management
-- Created the mainframe service
 - Created the backend in its integrity from A-Z
 - Hooked and connected the code input form
 - Responsible for the animations and the connection to the backend for code input
